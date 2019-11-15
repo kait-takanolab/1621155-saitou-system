@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Saitou system</title>
+        <!--bulma使用-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" rel="stylesheet">
+        <!--csv読込jQuery-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+         <h1 class="title is-1">Habit Select</h1>
+          
+          <p class="subtitle">
+            Habit correction system  
+          </p>
+          <p>
+              Welcome, <u>user name</u>
+              <div class="buttons">  
+                    <button class="button is-text">logout</button>
+                  </div>
+          </p>
+        </div>
+      </section>
+      <div class="table_csv"></div>
+
+</body>
+</html>
+
+<script>
+        $(function() {
+            $('.table_csv').CSVToTable('./saito.csv');
+        });
+      </script>

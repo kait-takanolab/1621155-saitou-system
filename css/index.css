@@ -1,0 +1,65 @@
+[v-cloak] {
+  display: none;
+}
+#title{
+  position:relative ;
+  top: 20px;
+}
+#speak{
+  position:relative ;
+  top: 60px;
+}
+#waittag{
+  position:relative ;
+  top: 65px;
+}
+#answer{
+  position:relative ;
+  top: 50px;
+}
+#result_area{
+  position:relative ;
+  top: 80px;
+}
+#question{
+  position:relative ;
+  top: 20px;
+}
+#cansbutton{
+  position:relative ;
+  top: 5px;
+}
+#nextbutton{
+  position: relative;
+    top: 5px;
+}
+#word{
+  position:relative ;
+  top: 10px;
+}
+#card{
+  position: relative;
+  top: 40px;
+  right: 60px;
+}
+#wordbutton{
+  position: relative;
+  top: 10px;
+}
+#question{
+  position: relative;
+  top: 15px;
+}
+
+#demo{
+  position: relative;
+  top: 20px;
+}
+#table-base{
+  position: relative;
+  top: 20px;
+}
+#finishbutton{
+  position: relative;
+  top: 70px;
+}

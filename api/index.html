@@ -1,0 +1,142 @@
+
+<html>
+<head>
+  <title>Mejiro</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <!-- <script type="text/javascript" src="js/script.js"></script> -->
+  <script src="https://use.fontawesome.com/0f942f413c.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.0.0/jszip.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery.xdomainajax.js"></script>
+  <!-- <script type="module" src="js/main.js"></script> -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/superagent/3.6.0/superagent.js"></script>
+  <script type="text/javascript"></script>
+  <script src="js/FileSaver.min.js"></script>
+  <script src="js/jszip.min.js"></script>
+  <!-- <script type="module">
+  import {pluralize} from 'https://cdnjs.cloudflare.com/ajax/libs/pluralize/7.0.0/pluralize.min.js'
+  let plu = pluralize(tests,1);
+  console.log(plu);
+ </script> -->
+  </script>
+  <style>
+
+  </style>
+  <main class="columns">
+    <div class="column is-5 is-offset-3">
+      <div id="title" class="notification is-primary column  is-offset-1">
+        <h1 class="title"> Mejiro</h1>
+        <div id="tar">
+        </div>
+      </div>
+      <div class="container is-fluid column  is-offset-1">
+      <div id="app">
+        <div v-if="!file">
+          <div class="file">
+          <label class="file-label">
+            <input class="file-input" type="file" @change="onFileChange">
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fa fa-upload"></i>
+              </span>
+              <span class="file-label">
+                Choose a file…
+              </span>
+            </span>
+          </label>
+        </div>
+        </div>
+        <div v-else>
+          <img :src="image" />
+          <button @click="removeImage">Remove image</button>
+        </div>
+      </div>
+      <div id="word">
+
+          <div class="field">
+            <label class="label">INPUT TEXT</label>
+            <div class="control">
+              <textarea class="textarea" placeholder="Textarea"  v-model="doc_text"></textarea>
+              <span class="icon is-small is-left"></i>
+            </div>
+          </div>
+        <!--
+          INPUT
+        <p class="control has-icons-left has-icons-right">
+          <input class="input is-primary" type="text" value="http://www.kait.jp/index2.php" v-model="link">
+          <span class="icon is-small is-left"></i>
+        </span>
+        </p>
+        <p class="help is-success"></p> -->
+<!-- </p><button v-on:click="generate == 'URL' ? gethtml() : gettext()" id="wordbutton" class="button is-primary  fa fa-globe">　GENERATE QESTION</button></p> -->
+      <p><button v-on:click="getText()" id="wordbutton" class="button is-primary is-medium  fa fa-globe">　GENERATE QUESTION</button></p>
+      </div>
+    </div>
+      <!-- <div id="rec" v-cloak>
+        <div class="column  is-offset-1">
+          <div class="content is-large " id="question">
+            <article class="level-left">
+              <p>{{ question_index }}</p>
+            </article>
+            <article class="box media">
+              <p>{{ now_question }}</p>
+            </article>
+          <!-- </p><button id="nextbutton" class="button is-primary is-offset-one-quarter is-medium fa fa-forward " v-bind:disabled="isButtonDisabled" v-on:click="nextbutton() ">　NEXT QESTION</button></p>
+          </div>
+        </p><button id="cansbutton" class="button is-primary is-offset-one-quarter is-medium fa fa-check-circle-o" v-bind:disabled="isButtonDisabled" v-on:click="ansbutton()">　CORRECT ANSEWER</button></p>
+          <form action="http://www.example.com/search">
+            <div class="field">
+              <p class="control">
+                <textarea id ="answer"  v-model="output" class="input is-primary" type="text" placeholder=""></textarea>
+              </p>
+            </div>
+          </form>
+          <div class="columns">
+            <div class="column">
+              <div class="columns">
+                <div class="column">
+                  <div id="recognition">
+                    <button type="button"  id ="speak" class="button is-primary is-medium fa fa-microphone"  v-bind:disabled="isButtonDisabled" v-on:click="recbutton()">　click to Speak</button>
+                  </div>
+                </div>
+                <div class="column is-8">
+                    <div id="waittag" class=" is-danger button"  v-show="recwait">{{ wait }}</div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-three-quarterv is-offset-one-quarter ">
+          </div>
+              <p>
+                <h1 id="error"></h1></p>
+            </div>
+          <div id="result_area" class="notification is-outlined">
+            <div id="result">
+              <li class="fa fa-flag" v-if="result"> Result</li>
+              <li class="fa fa-circle-o" v-if="correct">Correct</li>
+              <li class="fa fa-close" v-if="incorrect">Incorrect</li>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- <div class="column is-3  is-offset-1" id="demo">
+      </p><button v-on:click="gettable()"  class="button is-primary  fa fa-table">　GET TABLE</button></p>
+      <div id ="table-base">
+        <form id="search">
+          Search <input name="query" v-model="searchQuery">
+        </form>
+        <demo-grid
+          :data="gridData"
+          :columns="gridColumns"
+          :filter-key="searchQuery">
+        </demo-grid>
+      </div> -->
+    </div> --> -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/Pluralize.js"></script>
+    </body>

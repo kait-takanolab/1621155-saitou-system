@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Mejiro</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <!-- <script type="text/javascript" src="js/script.js"></script> -->
+  <script src="https://use.fontawesome.com/0f942f413c.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery.xdomainajax.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/superagent/3.6.0/superagent.js"></script>
+  <script type="text/javascript"></script>
+  </script>
+  <style>
+
+  </style>
+  <main class="columns">
+    <div class="column is-5 is-offset-3">
+      <div id="title" class="notification is-primary column  is-offset-1">
+        <h1 class="title"> Mejiro</h1>
+      </div>
+      <div class="container is-fluid column  is-offset-1" id="word">
+      <p><button v-on:click="getText()" id="wordbutton" class="button is-primary is-medium  fa fa-globe">　GENERATE QESTION</button></p>
+      </div>
+      <div id="rec" v-cloak>
+        <div class="column  is-offset-1">
+          <div class="content is-large " id="question">
+            <article class="level-left">
+              <p>{{ question_index }}</p>
+            </article>
+            <article class="box media">
+              <p>{{ now_question }}</p>
+            </article>
+          </p><button id="nextbutton" class="button is-primary is-offset-one-quarter is-medium fa fa-forward " v-bind:disabled="isButtonDisabled" v-on:click="nextbutton() ">　NEXT QESTION</button></p>
+          </div>
+        </p><button id="cansbutton" class="button is-primary is-offset-one-quarter is-medium fa fa-check-circle-o" v-bind:disabled="isButtonDisabled" v-on:click="ansbutton()">　CORRECT ANSEWER</button></p>
+          <form action="http://www.example.com/search">
+            <div class="field">
+              <p class="control">
+                <textarea id ="answer"  v-model="output" class="input is-primary" type="text" placeholder=""></textarea>
+              </p>
+            </div>
+          </form>
+          <div class="columns">
+            <div class="column">
+              <div class="columns">
+                <div class="column">
+                  <div id="recognition">
+                    <button type="button"  id ="speak" class="button is-primary is-medium fa fa-microphone"  v-bind:disabled="isButtonDisabled" v-on:click="recbutton()">　click to Speak</button>
+                  </div>
+                </div>
+                <div class="column is-8">
+                    <div id="waittag" class=" is-danger button"  v-show="recwait">{{ wait }}</div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-three-quarterv is-offset-one-quarter ">
+              <p>
+                <h1 id="error"></h1></p>
+            </div>
+          </div>
+          <div id="result_area" class="notification is-outlined">
+            <div id="result">
+              <li class="fa fa-flag" v-if="result"> Result</li>
+              <li class="fa fa-circle-o" v-if="correct">Correct</li>
+              <li class="fa fa-close" v-if="incorrect">Incorrect</li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="column is-3  is-offset-1" id="demo">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+    </body>
